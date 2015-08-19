@@ -1,0 +1,18 @@
+[Unit]
+Description=Puma web server
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=rubyworker
+WorkingDirectory=/home/rubyworker/your_app
+ExecStart=/home/rubyworker/.rvm/bin/your_app_pumactl -F config/puma.rb start
+ExecStop=/home/rubyworker/.rvm/bin/your_app_pumactl -F config/puma.rb stop
+ExecReload=/home/rubyworker/.rvm/bin/your_app_pumactl -F config/puma.rb phased-restart
+
+TimeoutSec=15
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
