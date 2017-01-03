@@ -4,12 +4,19 @@ After=syslog.target
 After=network.target
 
 [Service]
+# Foreground process (do not use --daemon in ExecStart or config.rb)
 Type=simple
+
+# Preferably configure a non-privileged user
 User=rubyworker
-WorkingDirectory=/home/rubyworker/your_app
-ExecStart=/home/rubyworker/.rvm/bin/your_app_pumactl -F config/puma.rb start
-ExecStop=/home/rubyworker/.rvm/bin/your_app_pumactl -F config/puma.rb stop
-ExecReload=/home/rubyworker/.rvm/bin/your_app_pumactl -F config/puma.rb phased-restart
+
+# Specify the path to your puma application root
+WorkingDirectory=/home/rubyworker/APPNAME
+
+# The commands to start/stop/reload Puma
+ExecStart=/home/rubyworker/.rvm/bin/APPNAME_pumactl -F config/puma.rb start
+ExecStop=/home/rubyworker/.rvm/bin/APPNAME_pumactl -F config/puma.rb stop
+ExecReload=/home/rubyworker/.rvm/bin/APPNAME_pumactl -F config/puma.rb phased-restart
 
 TimeoutSec=15
 Restart=always
