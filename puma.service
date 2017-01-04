@@ -14,9 +14,9 @@ User=rubyworker
 WorkingDirectory=/home/rubyworker/APPNAME
 
 # The commands to start/stop/reload Puma
-ExecStart=/home/rubyworker/.rvm/bin/APPNAME_pumactl -F config/puma.rb start
-ExecStop=/home/rubyworker/.rvm/bin/APPNAME_pumactl -F config/puma.rb stop
-ExecReload=/home/rubyworker/.rvm/bin/APPNAME_pumactl -F config/puma.rb phased-restart
+ExecStart=/home/rubyworker/.rvm/bin/APPNAME_pumactl -F config/puma/production.rb start
+ExecStop=/home/rubyworker/.rvm/bin/APPNAME_pumactl -F config/puma/production.rb stop
+ExecReload=/home/rubyworker/.rvm/bin/APPNAME_pumactl -F config/puma/production.rb phased-restart
 
 TimeoutSec=15
 Restart=always
