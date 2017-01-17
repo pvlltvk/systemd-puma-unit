@@ -1,0 +1,19 @@
+[Unit]
+Description=Sidekiq
+After=syslog.target network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/rubyworker/APPNAME
+ExecStart=/home/rubyworker/.rvm/bin/APPNAME_sidekiq -c 10 -e production
+
+# Preferably configure a non-privileged user
+User=rubyworker
+Group=rubyworker
+UMask=0002
+
+RestartSec=1
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
