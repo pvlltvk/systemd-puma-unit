@@ -59,3 +59,9 @@ systemctl restart puma.service
 
   1. Official Puma docs for using systemd (not for using with RVM) https://github.com/puma/puma/blob/master/docs/systemd.md
   2. Official example of Puma config file https://github.com/puma/puma/blob/master/examples/config.rb
+
+## Addition for Sidekiq
+
+```
+rvm wrapper RUBYVERSION@GEMSET APPNAME sidekiq
+```
